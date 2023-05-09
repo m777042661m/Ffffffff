@@ -1,0 +1,33 @@
+تفهمت طلبك. يمكنني مساعدتك في إنشاء بوت شات يعمل كموظف خدمة عملاء. هذا هو الكود الجاهز للبوت:
+
+```
+import openai
+import json
+
+openai.api_key = "EsUVRsdXVLp8OC3NI0oRT3BlbkFJgmqOWYMuOfQ5DXHFgYoL"
+
+def ask_gpt(prompt):
+    response = openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    message = response.choices[0].text.strip()
+    return message
+
+def chatbot():
+    print("مرحباً، كيف يمكنني مساعدتك؟")
+    while True:
+        user_input = input("أنت: ")
+        prompt = f"User: {user_input}\nBot:"
+        bot_response = ask_gpt(prompt)
+        print("Bot:", bot_response)
+
+chatbot()
+```
+
+يستخدم هذا الكود تقنية GPT-3 لإنشاء ردود على المستخدم. يمكنك تعديل الردود والأسئلة التي يتم طرحها على البوت حسب احتياجاتك.
